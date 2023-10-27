@@ -1,0 +1,495 @@
+﻿@{
+    ViewBag.Title = "Giáo án";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head {
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Custom/Css/Library/glightbox.css?v=20220522")" />
+    <script type="text/javascript" src="@Url.Content("~/Content/Custom/Scripts/Category/Lesson.js?v=20220522")"></script>
+}
+<style>
+    .icon-custom {
+        max-width: 46px;
+        width: 100%;
+        height: 46px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        margin-right: 20px;
+        background: rgba(74, 108, 247, 0.1);
+        color: #4a6cf7;
+        font-weight: 700;
+    }
+
+        .icon-custom.success {
+            background: rgba(74, 108, 247, 0.1);
+            color: #4a6cf7;
+        }
+
+    .modal-dialog {
+        min-width: 95%;
+    }
+
+    iframe {
+        border: none; /* Reset default border */
+        height: 90vh; /* Viewport-relative units */
+        width: 90vw;
+    }
+</style>
+<div class="container-fluid" style="background-image: url('../../Content/Custom/Images/bgcontent.png'); background-repeat: no-repeat; background-position: center; background-size: 130%;">
+    <!-- ========== title-wrapper start ========== -->
+    <!-- ========== title-wrapper end ========== -->
+    <!-- Project Wrapper Start -->
+    <div class="projects-wrapper">
+        <div class="row" id="content-lesson">
+            @Html.Partial("ContentLessonPartital")
+        </div>
+        <!-- End Row -->
+    </div>
+</div>
+<div class="warning-modal">
+    <div class="modal fade" id="content-template" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content card-style" style="background-image: url('../../Content/Custom/Images/bgcontent.png'); background-repeat: no-repeat; background-position: center; background-size: 80%;">
+                <div class="modal-header px-0 border-0">
+                    <h5 class="text-bold">Danh sách mẫu giáo án</h5>
+
+                    <button class="border-0 bg-transparent h1"
+                            data-bs-dismiss="modal">
+                        <i class="lni lni-cross-circle"></i>
+                    </button>
+                </div>
+                <div class="px-0 border-0" style="display: flex; flex-shrink: 0; align-items: center; justify-content: space-between;">
+                    @Html.DevExpress().TextBox(s =>
+                {
+
+                    s.Name = "txtTemplateLessonSearch";
+                    s.Width = Unit.Pixel(210);
+                    s.Properties.NullText = "Tìm kiếm...";
+                    s.Properties.ClientSideEvents.TextChanged = "TemplateLessonSearchTextChanged";
+                }).GetHtml()
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="all-templatelesson" onchange="onChangeFilterAllTemplateLesson()">
+                        <label class="form-check-label" for="all-templatelesson">Tất cả</label>
+                    </div>
+                </div>
+
+                <div class="modal-body px-0" id="content-template-lesson">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="warning-modal">
+    <div class="modal fade" id="create-online-template" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content card-style" style="background-image: url('../../Content/Custom/Images/bgcontent.png'); background-repeat: no-repeat; background-position: center; background-size: 80%;">
+                <div class="modal-header px-0 border-0">
+                    <h5 class="text-bold">Soạn giáo án</h5>
+                    <button class="border-0 bg-transparent h1"
+                            data-bs-dismiss="modal">
+                        <i class="lni lni-cross-circle"></i>
+                    </button>
+
+                </div>
+                <div class="modal-body px-0" id="content-iframe-google">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="warning-modal">
+    <div class="modal fade" id="view-file" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content card-style">
+                <div class="modal-header px-0 border-0">
+                    <h5 class="text-bold">Xem nội dung</h5>
+
+                    <button class="border-0 bg-transparent h1"
+                            data-bs-dismiss="modal">
+                        <i class="lni lni-cross-circle"></i>
+                    </button>
+                </div>
+                <div class="px-0 border-0" style="display: flex; flex-shrink: 0; align-items: center; justify-content: space-between;">
+                </div>
+
+                <div class="modal-body px-0" id="content-view-file">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="warning-modal">
+    <div class="modal fade" id="view-gallery" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content card-style">
+                <div class="modal-header px-0 border-0">
+                    <h5 class="text-bold">Xem nội dung</h5>
+
+                    <button class="border-0 bg-transparent h1"
+                            data-bs-dismiss="modal">
+                        <i class="lni lni-cross-circle"></i>
+                    </button>
+                </div>
+
+                <div class="modal-body px-0" id="content-gallery-online">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="warning-modal">
+    <div class="modal fade" id="view-powperpoint-online" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content card-style">
+                <div class="modal-header px-0 border-0">
+                    <h5 class="text-bold">Xem nội dung</h5>
+
+                    <button class="border-0 bg-transparent h1"
+                            data-bs-dismiss="modal">
+                        <i class="lni lni-cross-circle"></i>
+                    </button>
+                </div>
+
+                <div class="modal-body px-0" id="content-powperpoint-online">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="warning-modal">
+    <div class="modal fade" id="view-powperpoint-online" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content card-style">
+                <div class="modal-header px-0 border-0">
+                    <h5 class="text-bold">Xem nội dung</h5>
+
+                    <button class="border-0 bg-transparent h1"
+                            data-bs-dismiss="modal">
+                        <i class="lni lni-cross-circle"></i>
+                    </button>
+                </div>
+
+                <div class="modal-body px-0" id="content-powperpoint-online">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.getElementById("filter-course").style.display = 'block';
+    if (comboBoxCourseFilter.GetValue() == null) {
+        $("#all-templatelesson").prop("checked", true);
+    }
+    $('#view-file').on('hidden.bs.modal', function (e) {
+        if (openVideo == 1) {
+            $('#video-lesson').get(0).pause();
+            $('#video-lesson').get(0).currentTime = 0;
+            openVideo = 0;
+        }
+    })
+</script>
+<script src="@Url.Content("~/Content/Custom/Scripts/Library/glightbox.js?v=20220522")"></script>
+
+
+@Html.DevExpress().PopupControl(settings =>
+{
+    settings.Name = "PopupControlLessonNotication";
+    settings.HeaderText = "THÔNG BÁO";
+    settings.Styles.Header.Paddings.PaddingTop = 30;
+    settings.ShowOnPageLoad = false;
+    settings.ShowCloseButton = false;
+    settings.SettingsAdaptivity.Mode = PopupControlAdaptivityMode.Always;
+    settings.SettingsAdaptivity.VerticalAlign = PopupAdaptiveVerticalAlign.WindowCenter;
+    settings.SettingsAdaptivity.MaxWidth = Unit.Percentage(65);
+    settings.AllowDragging = false;
+    settings.ShowFooter = true;
+    settings.Styles.Content.Paddings.Padding = 0;
+    settings.Styles.Content.Paddings.PaddingTop = 12;
+    settings.SetFooterTemplateContent(c =>
+    {
+        @Html.DevExpress().FormLayout(formLayoutsettings =>
+        {
+            formLayoutsettings.Name = "footerFormLayoutLessonNotication";
+            formLayoutsettings.Width = Unit.Percentage(100);
+            formLayoutsettings.ControlStyle.CssClass = "clearPaddings";
+            formLayoutsettings.Styles.LayoutItem.CssClass = "clearPaddings";
+            formLayoutsettings.Styles.LayoutGroup.CssClass = "clearPaddings";
+            formLayoutsettings.Items.AddGroupItem(g =>
+            {
+                g.GroupBoxDecoration = GroupBoxDecoration.None;
+                g.Paddings.Padding = Unit.Pixel(0);
+                g.Items.Add(i =>
+                {
+                    i.ShowCaption = DefaultBoolean.False;
+                }).SetNestedContent(() =>
+                {
+                    ViewContext.Writer.Write("<div class='buttonsContainer'>");
+                    Html.DevExpress().Button(s =>
+                    {
+                        s.Name = "btnSubmitLessonNotication";
+                        s.ControlStyle.CssClass = "submitButton";
+                        s.Width = Unit.Pixel(100);
+                        s.Text = "Tiếp tục";
+                        s.UseSubmitBehavior = false;
+                        s.ClientSideEvents.Click = "onSubmitClickLessonNotication";
+                    }).Render();
+                    Html.DevExpress().Button(s =>
+                    {
+                        s.Name = "btnCancelLessonNotication";
+                        s.Width = Unit.Pixel(100);
+                        s.ControlStyle.CssClass = "cancelButton";
+                        s.Text = "Mở lại";
+                        s.UseSubmitBehavior = false;
+                        s.ClientSideEvents.Click = "onCancelClickLessonNotication";
+                    }).Render();
+
+                    ViewContext.Writer.Write("</div>");
+                });
+            });
+        }).Render();
+    });
+    settings.SetContent(() =>
+    {
+        @Html.DevExpress().FormLayout(formLayoutsettings =>
+        {
+            formLayoutsettings.Name = "detailFormLayoutLessonNotication";
+            formLayoutsettings.ColumnCount = 2;
+            formLayoutsettings.SettingsAdaptivity.AdaptivityMode = FormLayoutAdaptivityMode.SingleColumnWindowLimit;
+            formLayoutsettings.SettingsAdaptivity.SwitchToSingleColumnAtWindowInnerWidth = 576;
+            formLayoutsettings.Items.AddGroupItem(g =>
+            {
+                g.GroupBoxStyle.Caption.CssClass = "groupCaption";
+                g.ShowCaption = DefaultBoolean.False;
+                g.ColumnSpan = 2;
+                g.ColumnCount = 2;
+                g.Paddings.Padding = Unit.Pixel(0);
+                g.GroupBoxDecoration = GroupBoxDecoration.HeadingLine;
+
+                g.Items.Add(i =>
+                {
+                    i.ColumnSpan = 2;
+                    i.ShowCaption = DefaultBoolean.False;
+                    i.SetNestedContent(() =>
+                    {
+                        ViewContext.Writer.Write("<div id=\"contentLessonNotication\" style=\"display:block;\">");
+
+                        ViewContext.Writer.Write("</div>");
+
+                    });
+                });
+
+
+
+            });
+
+        }).Render();
+    });
+}).GetHtml()
+
+
+@Html.DevExpress().PopupControl(settings =>
+{
+    settings.Name = "PopupControlContentRichText";
+    settings.HeaderText = "XEM NỘI DUNG";
+    settings.Styles.Header.Paddings.PaddingTop = 30;
+    settings.ShowOnPageLoad = false;
+    settings.ShowCloseButton = true;
+    settings.CloseAction = CloseAction.None;
+    settings.ClientSideEvents.CloseButtonClick = "checkLenghtContent";
+    settings.SettingsAdaptivity.Mode = PopupControlAdaptivityMode.Always;
+    settings.SettingsAdaptivity.VerticalAlign = PopupAdaptiveVerticalAlign.WindowTop;
+    settings.SettingsAdaptivity.MaxWidth = Unit.Percentage(100);
+    settings.AllowDragging = false;
+
+    settings.ShowFooter = true;
+    settings.Styles.Content.Paddings.Padding = 0;
+    settings.Styles.Content.Paddings.PaddingTop = 12;
+    settings.SetFooterTemplateContent(c =>
+    {
+        @Html.DevExpress().FormLayout(formLayoutsettings =>
+        {
+            formLayoutsettings.Name = "footerFormLayoutContentRichText";
+            formLayoutsettings.Width = Unit.Percentage(100);
+            formLayoutsettings.ControlStyle.CssClass = "clearPaddings";
+            formLayoutsettings.Styles.LayoutItem.CssClass = "clearPaddings";
+            formLayoutsettings.Styles.LayoutGroup.CssClass = "clearPaddings";
+            formLayoutsettings.Items.AddGroupItem(g =>
+            {
+                g.GroupBoxDecoration = GroupBoxDecoration.None;
+                g.Paddings.Padding = Unit.Pixel(0);
+                g.Items.Add(i =>
+                {
+                    i.ShowCaption = DefaultBoolean.False;
+                }).SetNestedContent(() =>
+                {
+                    ViewContext.Writer.Write("<div class='buttonsContainer'>");
+
+                    Html.DevExpress().Button(s =>
+                    {
+                        s.Name = "btnSaveContentRichText";
+                        s.Width = Unit.Pixel(100);
+                        s.ControlStyle.CssClass = "cancelButton";
+                        s.Text = "Lưu";
+                        s.UseSubmitBehavior = false;
+                        s.ClientSideEvents.Click = "onSaveContentRichTextClick";
+                    }).Render();
+                    ViewContext.Writer.Write("</div>");
+                });
+            });
+        }).Render();
+    });
+    settings.SetContent(() =>
+    {
+        @Html.DevExpress().FormLayout(formLayoutsettings =>
+        {
+
+            formLayoutsettings.Name = "detailFormLayoutContentRichText";
+            formLayoutsettings.ColumnCount = 2;
+            formLayoutsettings.SettingsAdaptivity.AdaptivityMode = FormLayoutAdaptivityMode.SingleColumnWindowLimit;
+            formLayoutsettings.SettingsAdaptivity.SwitchToSingleColumnAtWindowInnerWidth = 576;
+            formLayoutsettings.Items.AddGroupItem(g =>
+            {
+                g.GroupBoxStyle.Caption.CssClass = "groupCaption";
+                g.ShowCaption = DefaultBoolean.False;
+                g.ColumnSpan = 2;
+                g.ColumnCount = 2;
+                g.Paddings.Padding = Unit.Pixel(0);
+                g.GroupBoxDecoration = GroupBoxDecoration.HeadingLine;
+
+                g.Items.Add(i =>
+                {
+                    i.ColumnSpan = 2;
+                    i.ShowCaption = DefaultBoolean.False;
+
+                    i.SetNestedContent(() =>
+                    {
+                        ViewContext.Writer.Write("<div id=\"contentRichText\" style=\"display:block;\">");
+
+                        ViewContext.Writer.Write("</div>");
+
+                    });
+                });
+
+            });
+
+        }).Render();
+    });
+}).GetHtml()
+@Html.DevExpress().PopupControl(settings =>
+{
+    settings.Name = "PopupControlContentInformation";
+    settings.HeaderText = "THÔNG BÁO";
+    settings.Styles.Header.Paddings.PaddingTop = 30;
+    settings.ShowOnPageLoad = false;
+    settings.ShowCloseButton = true;
+    settings.CloseAction = CloseAction.CloseButton;
+    settings.SettingsAdaptivity.Mode = PopupControlAdaptivityMode.Always;
+    settings.SettingsAdaptivity.VerticalAlign = PopupAdaptiveVerticalAlign.WindowCenter;
+    settings.SettingsAdaptivity.MaxWidth = Unit.Percentage(50);
+    settings.AllowDragging = false;
+    settings.ShowFooter = true;
+    settings.Styles.Content.Paddings.Padding = 0;
+    settings.Styles.Content.Paddings.PaddingTop = 12;
+    settings.SetFooterTemplateContent(c =>
+    {
+        @Html.DevExpress().FormLayout(formLayoutsettings =>
+        {
+            formLayoutsettings.Name = "footerFormLayoutContentInformation";
+            formLayoutsettings.Width = Unit.Percentage(100);
+            formLayoutsettings.ControlStyle.CssClass = "clearPaddings";
+            formLayoutsettings.Styles.LayoutItem.CssClass = "clearPaddings";
+            formLayoutsettings.Styles.LayoutGroup.CssClass = "clearPaddings";
+            formLayoutsettings.Items.AddGroupItem(g =>
+            {
+                g.GroupBoxDecoration = GroupBoxDecoration.None;
+                g.Paddings.Padding = Unit.Pixel(0);
+                g.Items.Add(i =>
+                {
+                    i.ShowCaption = DefaultBoolean.False;
+                }).SetNestedContent(() =>
+                {
+                    ViewContext.Writer.Write("<div class='buttonsContainer'>");
+
+                    Html.DevExpress().Button(s =>
+                    {
+                        s.Name = "btnSaveContentInformation";
+                        s.Width = Unit.Pixel(100);
+                        s.ControlStyle.CssClass = "cancelButton";
+                        s.Text = "Lưu";
+                        s.UseSubmitBehavior = false;
+                        s.ClientSideEvents.Click = "onSaveContentRichInformation";
+                    }).Render();
+                    Html.DevExpress().Button(s =>
+                    {
+                        s.Name = "btnNoSaveContentInformation";
+                        s.Width = Unit.Pixel(100);
+                        s.ControlStyle.CssClass = "cancelButton";
+                        s.Text = "Không lưu";
+                        s.UseSubmitBehavior = false;
+                        s.ClientSideEvents.Click = "onNoSaveContentInformation";
+                    }).Render();
+                    Html.DevExpress().Button(s =>
+                    {
+                        s.Name = "btnCancelContentInformation";
+                        s.Width = Unit.Pixel(100);
+                        s.ControlStyle.CssClass = "cancelButton";
+                        s.Text = "Hủy";
+                        s.UseSubmitBehavior = false;
+                        s.ClientSideEvents.Click = "onCancelContentInformation";
+                    }).Render();
+                    ViewContext.Writer.Write("</div>");
+                });
+            });
+        }).Render();
+    });
+    settings.SetContent(() =>
+    {
+        @Html.DevExpress().FormLayout(formLayoutsettings =>
+        {
+            formLayoutsettings.Name = "detailFormLayoutContentInformation";
+            formLayoutsettings.ColumnCount = 2;
+            formLayoutsettings.SettingsAdaptivity.AdaptivityMode = FormLayoutAdaptivityMode.SingleColumnWindowLimit;
+            formLayoutsettings.SettingsAdaptivity.SwitchToSingleColumnAtWindowInnerWidth = 576;
+            formLayoutsettings.Items.AddGroupItem(g =>
+            {
+                g.GroupBoxStyle.Caption.CssClass = "groupCaption";
+                g.ShowCaption = DefaultBoolean.False;
+                g.ColumnSpan = 2;
+                g.ColumnCount = 2;
+                g.Paddings.Padding = Unit.Pixel(0);
+                g.GroupBoxDecoration = GroupBoxDecoration.HeadingLine;
+
+                g.Items.Add(i =>
+                {
+                    i.ColumnSpan = 2;
+                    i.ShowCaption = DefaultBoolean.False;
+                    i.SetNestedContent(() =>
+                    {
+                        ViewContext.Writer.Write("<div id=\"contentRichText\" style=\"display:block;\">Bạn có muốn lưu những thay đổi này không?");
+
+                        ViewContext.Writer.Write("</div>");
+
+                    });
+                });
+
+            });
+
+        }).Render();
+    });
+}).GetHtml()

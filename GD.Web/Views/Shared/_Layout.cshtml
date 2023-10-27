@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+        @{ var pageTitleParts = new string[] { ViewBag.Title, "GD System" }; }
+        @string.Join(" - ", @pageTitleParts.Where(s => !string.IsNullOrEmpty(s)))
+    </title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0" />
+    @Html.DevExpress().GetStyleSheets(
+    new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.GridView },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.Scheduler }
+)
+    @Html.DevExpress().GetScripts(
+        new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+        new Script { ExtensionSuite = ExtensionSuite.Editors },
+        new Script { ExtensionSuite = ExtensionSuite.GridView },
+        new Script { ExtensionSuite = ExtensionSuite.Scheduler }
+    )
+    <link rel="icon" href="@Url.Content("~/Content/Custom/Images/gdlogo.ico")" type="image/x-icon" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/themes/css/bootstrap.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/themes/css/lineicons.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/themes/css/main.css?v=20220304")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Custom/Css/Library/toastr.min.css")" />
+    @RenderSection("Head", false)
+    <script type="text/javascript" src="@Url.Content("~/Content/Custom/Scripts/Library/functions.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/Custom/Scripts/Library/toastr.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/Custom/Scripts/System/Layout.js?v=20220311")"></script>
+</head>
+<body>
+    @using (Html.BeginForm("SignOut", "Account", FormMethod.Post, new { id = "signOutForm" }))
+    {
+        @Html.AntiForgeryToken();
+    }
+    @Html.DevExpress().LoadingPanel(settings =>
+   {
+      settings.Name = "Loading";
+      settings.Modal = true;
+      settings.Text = "Đang tải...";
+      settings.ImagePosition = ImagePosition.Top;
+      settings.Images.LoadingPanel.Url = "~/Content/Custom/Images/loading.gif";
+      settings.Images.LoadingPanel.Width = 60;
+      settings.Images.LoadingPanel.Height = 60;
+   }).GetHtml()
+    @Html.DevExpress().LoadingPanel(settings =>
+{
+  settings.Name = "LoadingSave";
+  settings.Modal = true;
+  settings.Text = "Đang lưu...";
+  settings.ImagePosition = ImagePosition.Top;
+  settings.Images.LoadingPanel.Url = "~/Content/Custom/Images/loading.gif";
+  settings.Images.LoadingPanel.Width = 60;
+  settings.Images.LoadingPanel.Height = 60;
+}).GetHtml()
+    <!-- ======== sidebar-nav start =========== -->
+    <!-- ======== sidebar-nav end =========== -->
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main">
+        <!-- ========== header start ========== -->
+        <!-- ========== header end ========== -->
+        <!-- ========== section start ========== -->
+        <section class="section">
+            @RenderBody()
+        </section>
+        <!-- ========== section end ========== -->
+        <!-- ========== footer start =========== -->
+        <!-- ========== footer end =========== -->
+    </main>
+    <!-- ======== main-wrapper end =========== -->
+    <!-- ========= All Javascript files linkup ======== -->
+    <script src="@Url.Content("~/Content/themes/js/bootstrap.bundle.min.js")"></script>
+    <script src="@Url.Content("~/Content/themes/js/Chart.min.js")"></script>
+    <script src="@Url.Content("~/Content/themes/js/dynamic-pie-chart.js")"></script>
+    <script src="@Url.Content("~/Content/themes/js/moment.min.js")"></script>
+    <script src="@Url.Content("~/Content/themes/js/fullcalendar.js")"></script>
+    <script src="@Url.Content("~/Content/themes/js/jvectormap.min.js")"></script>
+    <script src="@Url.Content("~/Content/themes/js/world-merc.js")"></script>
+    <script src="@Url.Content("~/Content/themes/js/polyfill.js")"></script>
+    <script src="@Url.Content("~/Content/themes/js/main.js")"></script>
+    <script>
+            //document.addEventListener('contextmenu', event => event.preventDefault());
+            //$(document).keydown(function (event) {
+            //    if (event.keyCode == 123) {
+            //        return false;
+            //    } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
+            //        return false;
+            //    }
+            //});
+    </script>
+</body>
+</html>

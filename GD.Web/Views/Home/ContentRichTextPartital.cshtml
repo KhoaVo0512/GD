@@ -1,0 +1,42 @@
+﻿
+@if (ViewBag.DocumentUrl != null)
+{
+    @Html.DevExpress().RichEdit(settings =>
+{
+
+    settings.Name = "RichEdit";
+    settings.CallbackRouteValues = new { Controller = "Home", Action = "LoadAndSavePartial" };
+    settings.SettingsDocumentSelector.FileListSettings.View = FileListView.Details;
+    settings.ClientSideEvents.Init = "showSymbols";
+    settings.Width = Unit.Percentage(100);
+    settings.Height = Unit.Pixel(700);
+    settings.WorkDirectory = "~/Content/Thumbnail/";
+    settings.RibbonMode = DevExpress.Web.ASPxRichEdit.RichEditRibbonMode.Ribbon;
+    settings.ShowConfirmOnLosingChanges = false;
+    
+    settings.ActiveTabIndex = 0;
+    
+    settings.PreRender = (s, e) =>
+    {
+        MVCxRichEdit richEdit = (MVCxRichEdit)s;
+        richEdit.CreateDefaultRibbonTabs(true);
+        RibbonTab fileTab = richEdit.RibbonTabs[0];
+        fileTab.Visible = false;
+        richEdit.Focus();
+    };
+}).Open(Server.MapPath(ViewBag.DocumentUrl)).GetHtml()
+}
+else
+{
+    <div class="col-lg-12">
+        <div class="alert-box primary-alert">
+            <div class="alert">
+                <h4 class="alert-heading">THÔNG BÁO</h4>
+                <p class="text-medium">
+                    Chưa tồn tại tập tin này.
+                </p>
+            </div>
+        </div>
+    </div>
+}
+

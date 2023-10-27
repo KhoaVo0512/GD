@@ -1,0 +1,40 @@
+﻿@if (ViewBag.DataLesson != null && ViewBag.DataLesson.Count > 0)
+{
+    var listColor = new string[] { "primary-bg", "orange-bg", "success-bg", "warning-bg", "info-bg", "danger-bg" };
+    var listIcon = new string[] { "lni lni-video", "lni lni-image", "lni lni-empty-file" };
+    var indexColor = 0;
+
+    <div class="col-lg-4 col-md-6">
+        <div class="card-style project-card mb-30" onclick="ViewFileContent('Chăm chỉ',1, 'fileGDVN769-9a18ff80-7cf3-485f-8f07-0e7ab853a5b6.doc', null, null)">
+            <img src="@Url.Content("~/Content/Thumbnail/avatarGDVN856-83f0c903-16b9-4c7b-97ce-2b504434a323.png" )" style="border-radius: 20px;" class="card-img-top" height="350" alt="Chăm chỉ">
+
+            <div class="card-body">
+                <div>
+                    <h5>Test word</h5>
+                </div>
+
+            </div>
+
+            <div class="card-footer p-0 bg-transparent">
+                <div style="padding-top: 10px;">
+                    <p style="font-size: 15px;">Tác giả: Mr Khoa</p>
+                </div>
+            </div>
+
+        </div>
+        <!-- End Card -->
+    </div>
+}
+else
+{
+    <div class="col-lg-12">
+        <div class="alert-box danger-alert">
+            <div class="alert" style="background-color: #ffffff;">
+                <h4 class="alert-heading">THÔNG BÁO</h4>
+                <p style="font-size: 15px;" class="text-medium">
+                    Chưa có dữ liệu giáo án.
+                </p>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B352604A-72EF-4930-937C-C4D00EE47BB9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GD.Data</RootNamespace>
+    <AssemblyName>GD.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GDDbContext.cs" />
+    <Compile Include="Infrastructure\DbFactory.cs" />
+    <Compile Include="Infrastructure\Disposable.cs" />
+    <Compile Include="Infrastructure\IDbFactory.cs" />
+    <Compile Include="Infrastructure\IRepository.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Migrations\202202240625467_InitDB.cs" />
+    <Compile Include="Migrations\202202240625467_InitDB.designer.cs">
+      <DependentUpon>202202240625467_InitDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202261436080_UpdateFile.cs" />
+    <Compile Include="Migrations\202202261436080_UpdateFile.designer.cs">
+      <DependentUpon>202202261436080_UpdateFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202270219561_AddNewFieldFile.cs" />
+    <Compile Include="Migrations\202202270219561_AddNewFieldFile.designer.cs">
+      <DependentUpon>202202270219561_AddNewFieldFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202270623558_AddPointToTypeScore.cs" />
+    <Compile Include="Migrations\202202270623558_AddPointToTypeScore.designer.cs">
+      <DependentUpon>202202270623558_AddPointToTypeScore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202271426213_AddUserGrade.cs" />
+    <Compile Include="Migrations\202202271426213_AddUserGrade.designer.cs">
+      <DependentUpon>202202271426213_AddUserGrade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202280214078_AddStudentGrade.cs" />
+    <Compile Include="Migrations\202202280214078_AddStudentGrade.designer.cs">
+      <DependentUpon>202202280214078_AddStudentGrade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202280848391_UpdateForeignKeyFile.cs" />
+    <Compile Include="Migrations\202202280848391_UpdateForeignKeyFile.designer.cs">
+      <DependentUpon>202202280848391_UpdateForeignKeyFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203050219008_InitTest.cs" />
+    <Compile Include="Migrations\202203050219008_InitTest.designer.cs">
+      <DependentUpon>202203050219008_InitTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203121258179_UpdateExamTest.cs" />
+    <Compile Include="Migrations\202203121258179_UpdateExamTest.designer.cs">
+      <DependentUpon>202203121258179_UpdateExamTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203121629298_AddTypeLevelQuestion.cs" />
+    <Compile Include="Migrations\202203121629298_AddTypeLevelQuestion.designer.cs">
+      <DependentUpon>202203121629298_AddTypeLevelQuestion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203161219492_UpdateSchool.cs" />
+    <Compile Include="Migrations\202203161219492_UpdateSchool.designer.cs">
+      <DependentUpon>202203161219492_UpdateSchool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203180238002_AddDisplayOrder.cs" />
+    <Compile Include="Migrations\202203180238002_AddDisplayOrder.designer.cs">
+      <DependentUpon>202203180238002_AddDisplayOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203240328085_UpdateStudentGrade.cs" />
+    <Compile Include="Migrations\202203240328085_UpdateStudentGrade.designer.cs">
+      <DependentUpon>202203240328085_UpdateStudentGrade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203241518089_UpdateMoreField.cs" />
+    <Compile Include="Migrations\202203241518089_UpdateMoreField.designer.cs">
+      <DependentUpon>202203241518089_UpdateMoreField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203260210475_UpdateScore.cs" />
+    <Compile Include="Migrations\202203260210475_UpdateScore.designer.cs">
+      <DependentUpon>202203260210475_UpdateScore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203270452040_UpdateScore1.cs" />
+    <Compile Include="Migrations\202203270452040_UpdateScore1.designer.cs">
+      <DependentUpon>202203270452040_UpdateScore1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203290123412_UpdateAuthorFile.cs" />
+    <Compile Include="Migrations\202203290123412_UpdateAuthorFile.designer.cs">
+      <DependentUpon>202203290123412_UpdateAuthorFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203300725254_UpdateExamLevel.cs" />
+    <Compile Include="Migrations\202203300725254_UpdateExamLevel.designer.cs">
+      <DependentUpon>202203300725254_UpdateExamLevel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204020129143_AddPuzzle.cs" />
+    <Compile Include="Migrations\202204020129143_AddPuzzle.designer.cs">
+      <DependentUpon>202204020129143_AddPuzzle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204120207155_UpdatePreviewImageFile.cs" />
+    <Compile Include="Migrations\202204120207155_UpdatePreviewImageFile.designer.cs">
+      <DependentUpon>202204120207155_UpdatePreviewImageFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205050251175_UpdateEditorLinkEmployee.cs" />
+    <Compile Include="Migrations\202205050251175_UpdateEditorLinkEmployee.designer.cs">
+      <DependentUpon>202205050251175_UpdateEditorLinkEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Category\AnswerRepository.cs" />
+    <Compile Include="Repositories\Category\PuzzleRepository.cs" />
+    <Compile Include="Repositories\Category\FileRepository.cs" />
+    <Compile Include="Repositories\Category\ExamLevelRepository.cs" />
+    <Compile Include="Repositories\Category\ExamTestRepository.cs" />
+    <Compile Include="Repositories\Category\ExamRepository.cs" />
+    <Compile Include="Repositories\Category\GradeGroupRepository.cs" />
+    <Compile Include="Repositories\Category\QuestionRepository.cs" />
+    <Compile Include="Repositories\Category\LevelQuestionRepository.cs" />
+    <Compile Include="Repositories\Category\TestRepository.cs" />
+    <Compile Include="Repositories\Category\TypeScoreRepository.cs" />
+    <Compile Include="Repositories\Category\ScoreRepository.cs" />
+    <Compile Include="Repositories\Category\TypeQuestionRepository.cs" />
+    <Compile Include="Repositories\Category\TestQuestionRepository.cs" />
+    <Compile Include="Repositories\Category\StudentRepository.cs" />
+    <Compile Include="Repositories\Category\StudentGradeRepository.cs" />
+    <Compile Include="Repositories\Category\WardRepository.cs" />
+    <Compile Include="Repositories\Category\DistrictRepository.cs" />
+    <Compile Include="Repositories\Category\ProvinceRepository.cs" />
+    <Compile Include="Repositories\Category\ScholasticRepository.cs" />
+    <Compile Include="Repositories\Category\TopicRepository.cs" />
+    <Compile Include="Repositories\Category\CourseRepository.cs" />
+    <Compile Include="Repositories\Category\GradeRepository.cs" />
+    <Compile Include="Repositories\Category\SchoolRepository.cs" />
+    <Compile Include="Repositories\System\ApplicationGroupMenuRepository.cs" />
+    <Compile Include="Repositories\System\ApplicationGroupRepository.cs" />
+    <Compile Include="Repositories\System\ApplicationRoleGroupRepository.cs" />
+    <Compile Include="Repositories\System\ApplicationRoleRepository.cs" />
+    <Compile Include="Repositories\System\ApplicationUserGroupRepository.cs" />
+    <Compile Include="Repositories\System\UserGradeRepository.cs" />
+    <Compile Include="Repositories\System\UserGradeGroupRepository.cs" />
+    <Compile Include="Repositories\System\UserCourseRepository.cs" />
+    <Compile Include="Repositories\System\LevelRepository.cs" />
+    <Compile Include="Repositories\System\EmployeeRepository.cs" />
+    <Compile Include="Repositories\System\MenuGroupRepository.cs" />
+    <Compile Include="Repositories\System\MenuRepository.cs" />
+    <Compile Include="Repositories\System\ErrorLogRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GD.Model\GD.Model.csproj">
+      <Project>{315da332-f4c5-48f5-ad20-9295ba137c3c}</Project>
+      <Name>GD.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202202240625467_InitDB.resx">
+      <DependentUpon>202202240625467_InitDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202261436080_UpdateFile.resx">
+      <DependentUpon>202202261436080_UpdateFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202270219561_AddNewFieldFile.resx">
+      <DependentUpon>202202270219561_AddNewFieldFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202270623558_AddPointToTypeScore.resx">
+      <DependentUpon>202202270623558_AddPointToTypeScore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202271426213_AddUserGrade.resx">
+      <DependentUpon>202202271426213_AddUserGrade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202280214078_AddStudentGrade.resx">
+      <DependentUpon>202202280214078_AddStudentGrade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202280848391_UpdateForeignKeyFile.resx">
+      <DependentUpon>202202280848391_UpdateForeignKeyFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203050219008_InitTest.resx">
+      <DependentUpon>202203050219008_InitTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203121258179_UpdateExamTest.resx">
+      <DependentUpon>202203121258179_UpdateExamTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203121629298_AddTypeLevelQuestion.resx">
+      <DependentUpon>202203121629298_AddTypeLevelQuestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203161219492_UpdateSchool.resx">
+      <DependentUpon>202203161219492_UpdateSchool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203180238002_AddDisplayOrder.resx">
+      <DependentUpon>202203180238002_AddDisplayOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203240328085_UpdateStudentGrade.resx">
+      <DependentUpon>202203240328085_UpdateStudentGrade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203241518089_UpdateMoreField.resx">
+      <DependentUpon>202203241518089_UpdateMoreField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203260210475_UpdateScore.resx">
+      <DependentUpon>202203260210475_UpdateScore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203270452040_UpdateScore1.resx">
+      <DependentUpon>202203270452040_UpdateScore1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203290123412_UpdateAuthorFile.resx">
+      <DependentUpon>202203290123412_UpdateAuthorFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203300725254_UpdateExamLevel.resx">
+      <DependentUpon>202203300725254_UpdateExamLevel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204020129143_AddPuzzle.resx">
+      <DependentUpon>202204020129143_AddPuzzle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204120207155_UpdatePreviewImageFile.resx">
+      <DependentUpon>202204120207155_UpdatePreviewImageFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205050251175_UpdateEditorLinkEmployee.resx">
+      <DependentUpon>202205050251175_UpdateEditorLinkEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

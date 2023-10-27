@@ -1,0 +1,6 @@
+D:\dong goi\courseware\courseware\GD.Common\bin\Debug\GD.Common.dll
+D:\dong goi\courseware\courseware\GD.Common\bin\Debug\GD.Common.pdb
+D:\dong goi\courseware\courseware\GD.Common\obj\Debug\GD.Common.csproj.AssemblyReference.cache
+D:\dong goi\courseware\courseware\GD.Common\obj\Debug\GD.Common.csproj.CoreCompileInputs.cache
+D:\dong goi\courseware\courseware\GD.Common\obj\Debug\GD.Common.dll
+D:\dong goi\courseware\courseware\GD.Common\obj\Debug\GD.Common.pdb

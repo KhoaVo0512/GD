@@ -1,0 +1,16 @@
+D:\dong goi\courseware\courseware\GD.Model\bin\Debug\GD.Model.dll.config
+D:\dong goi\courseware\courseware\GD.Model\bin\Debug\GD.Model.dll
+D:\dong goi\courseware\courseware\GD.Model\bin\Debug\GD.Model.pdb
+D:\dong goi\courseware\courseware\GD.Model\bin\Debug\EntityFramework.dll
+D:\dong goi\courseware\courseware\GD.Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\dong goi\courseware\courseware\GD.Model\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\dong goi\courseware\courseware\GD.Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\dong goi\courseware\courseware\GD.Model\bin\Debug\EntityFramework.xml
+D:\dong goi\courseware\courseware\GD.Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\dong goi\courseware\courseware\GD.Model\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\dong goi\courseware\courseware\GD.Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\dong goi\courseware\courseware\GD.Model\obj\Debug\GD.Model.csproj.AssemblyReference.cache
+D:\dong goi\courseware\courseware\GD.Model\obj\Debug\GD.Model.csproj.CoreCompileInputs.cache
+D:\dong goi\courseware\courseware\GD.Model\obj\Debug\GD.Model.csproj.CopyComplete
+D:\dong goi\courseware\courseware\GD.Model\obj\Debug\GD.Model.dll
+D:\dong goi\courseware\courseware\GD.Model\obj\Debug\GD.Model.pdb

@@ -1,0 +1,29 @@
+﻿.content-print {
+    margin: 0
+}
+
+.sheet {
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    page-break-after: always;
+}
+
+.A4.landscape .sheet {
+    width: 297mm;
+}
+
+@media screen {
+    .sheet {
+        background: white;
+        box-shadow: 0 .5mm 2mm rgba(0,0,0,.3);
+        margin: 5mm auto;
+    }
+}
+
+@media print {
+    .A4.landscape {
+        width: 297mm
+    }
+}
