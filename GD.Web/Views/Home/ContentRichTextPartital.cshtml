@@ -20,8 +20,6 @@
     {
         MVCxRichEdit richEdit = (MVCxRichEdit)s;
         richEdit.CreateDefaultRibbonTabs(true);
-        RibbonTab fileTab = richEdit.RibbonTabs[0];
-        fileTab.Visible = false;
         richEdit.Focus();
     };
 }).Open(Server.MapPath(ViewBag.DocumentUrl)).GetHtml()
